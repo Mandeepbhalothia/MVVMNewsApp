@@ -31,7 +31,7 @@ class SearchNewsFragment : Fragment() {
     lateinit var newsViewModel: NewsViewModel
     private lateinit var newsAdapter: NewsAdapter
 
-    val TAG = "SearchNewsFragment"
+    private val TAG = "SearchNewsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,7 +65,7 @@ class SearchNewsFragment : Fragment() {
                 delay(SEARCH_DELAY)
                 editable?.let {
                     if (editable.toString().isNotEmpty())
-                        newsViewModel.searchForBreakingNews(editable.toString())
+                        newsViewModel.searchForNews(editable.toString())
                 }
             }
 
@@ -129,7 +129,7 @@ class SearchNewsFragment : Fragment() {
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
             if(shouldPaginate) {
-                newsViewModel.searchForBreakingNews(etSearch.text.toString())
+                newsViewModel.searchForNews(etSearch.text.toString())
                 isScrolling = false
             }
         }
